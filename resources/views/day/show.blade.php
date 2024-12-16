@@ -5,40 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meals for Day {{ $day->day_number }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* Custom styling to match the design */
-        .week-selector button {
-            min-width: 120px;
-            border-radius: 20px;
-        }
-
-        .week-selector .active-week {
-            background-color: #f0ad4e;
-            color: #fff;
-            border: none;
-        }
-
-        .meal-card {
-            border-radius: 15px;
-            overflow: hidden;
-        }
-
-        .meal-card img {
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-        }
-
-        .meal-details li {
-            font-size: 0.9rem;
-        }
-
-        .mark-complete-btn {
-            background-color: #5cb85c;
-            color: #fff;
-            border-radius: 20px;
-            padding: 10px 20px;
-        }
-    </style>
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body class="bg-light">
 
