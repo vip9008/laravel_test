@@ -64,3 +64,7 @@ body {
     margin-top: -0.75rem;
     pointer-events: none;
 }
+
+.days-pagination {
+    align-items: center;
+}
