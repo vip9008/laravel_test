@@ -20,4 +20,14 @@ class DayController extends Controller
 
         return view('day.show', compact('day', 'weeks'));
     }
+
+    public function markComplete($id)
+    {
+        $day = Day::findOrFail($id);
+
+        $day->is_complete = true;
+        $day->save();
+
+        return redirect()->back()->with('success', 'Day marked as complete!');
+    }
 }

@@ -56,7 +56,10 @@
         </div>
         
         @if (!$day->is_complete)
-            <button class="btn mark-complete-btn">Mark Day as Complete</button>
+            <form method="POST" action="{{ route('day.markComplete', ['id' => $day->id]) }}">
+                @csrf
+                <button type="submit" class="btn mark-complete-btn">Mark Day as Complete</button>
+            </form>
         @else
             <button class="btn btn-secondary" disabled>Day Completed</button>
         @endif

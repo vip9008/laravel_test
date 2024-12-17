@@ -9,3 +9,4 @@ Route::get('/', function () {
 });
 
 Route::get('/day/{id}', [DayController::class, 'show'])->name('day.show');
+Route::post('/day/{id}/complete', [DayController::class, 'markComplete'])->name('day.markComplete');
