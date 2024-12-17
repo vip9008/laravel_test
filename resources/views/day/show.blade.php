@@ -44,6 +44,20 @@
         <h1 class="fw-bold">Day {{ $day->day_number }}</h1>
     </div> -->
 
+    <div class="d-flex justify-content-between mb-4">
+        <div class="btn-group days-pagination">
+            <a href="#" class="btn btn-primary active" aria-current="page">Active link</a>
+            <div>DAY {{$day->day_number}}</div>
+            <a href="#" class="btn btn-primary">Link</a>
+        </div>
+        
+        @if (!$day->is_complete)
+            <button class="btn mark-complete-btn">Mark Day as Complete</button>
+        @else
+            <button class="btn btn-secondary" disabled>Day Completed</button>
+        @endif
+    </div>
+
     <div class="row">
         @foreach ($day->meals as $meal)
             <div class="col-md-4 mb-4">
@@ -67,15 +81,6 @@
                 </div>
             </div>
         @endforeach
-    </div>
-
-    <!-- Mark Day as Complete -->
-    <div class="d-flex justify-content-end mt-4">
-        @if (!$day->is_complete)
-            <button class="btn mark-complete-btn">Mark Day as Complete</button>
-        @else
-            <button class="btn btn-secondary" disabled>Day Completed</button>
-        @endif
     </div>
 </div>
 
