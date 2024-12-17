@@ -6,7 +6,7 @@
     <title>Meals for Day {{ $day->day_number }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.scss') }}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -46,9 +46,13 @@
 
     <div class="d-flex justify-content-between mb-4">
         <div class="btn-group days-pagination">
-            <a href="#" class="btn btn-primary active" aria-current="page">Active link</a>
-            <div>DAY {{$day->day_number}}</div>
-            <a href="#" class="btn btn-primary">Link</a>
+            <a href="{{ route('day.show', ['id' => $day->day_number - 1]) }}" class="btn btn-success">
+                <i class="bi bi-arrow-left-short"></i>
+            </a>
+            <div class="day-title">DAY {{$day->day_number}}</div>
+            <a href="{{ route('day.show', ['id' => $day->day_number + 1]) }}" class="btn btn-success">
+                <i class="bi bi-arrow-right-short"></i>
+            </a>
         </div>
         
         @if (!$day->is_complete)
