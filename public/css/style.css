@@ -1,0 +1,66 @@
+body {
+    background-color: #f5f6fa;
+}
+
+.weeks-buttons {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.5rem #e3e3e3;
+}
+
+.weeks-buttons .week-group {
+    flex: 1 1 auto;
+    text-align: center;
+    position: relative;
+}
+
+.weeks-buttons .week-group > .btn-check:checked + .btn {
+    border-color: transparent;
+    background-color: #fcf0e2;
+    font-weight: bold;
+}
+
+.weeks-buttons .week-group .days-group {
+    display: none;
+    position: absolute;
+    margin-top: 0.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    box-shadow: 0 0.125rem 0.5rem #e3e3e3;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+}
+
+.weeks-buttons .week-group > .btn-check:checked ~ .days-group {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.weeks-buttons .week-group .days-group .btn {
+    padding: 0;
+    line-height: 2.25rem;
+    height: 2.25rem;
+    width: 2.25rem;
+    text-align: center;
+    border-radius: 100%;
+    border: none;
+    position: relative;
+}
+
+.weeks-buttons .week-group .days-group .btn:hover {
+    background-color: #ece8db;
+}
+
+.weeks-buttons .week-group .days-group .btn.active {
+    box-shadow: 0 0 2px 1px #c5c1b6;
+}
+
+.weeks-buttons .week-group .days-group .btn > .bi {
+    display: block;
+    font-size: 0.75rem;
+    color: #c5c1b6;
+    line-height: 1;
+    margin-top: -0.75rem;
+    pointer-events: none;
+}
