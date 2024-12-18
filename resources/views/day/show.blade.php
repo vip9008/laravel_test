@@ -58,32 +58,63 @@
         @if (!$day->is_complete)
             <form method="POST" action="{{ route('day.markComplete', ['id' => $day->id]) }}">
                 @csrf
-                <button type="submit" class="btn mark-complete-btn">Mark Day as Complete</button>
+                <button type="submit" class="btn btn-success icon-button mark-complete-btn">
+                    <i class="bi bi-check2"></i>
+                    <div>Mark Day as Complete</div>
+                </button>
             </form>
         @else
-            <button class="btn btn-secondary" disabled>Day Completed</button>
+            <button class="btn btn-secondary icon-button" disabled>
+                <i class="bi bi-check2-all"></i>
+                <div>Day Completed</div>
+            </button>
         @endif
     </div>
 
     <div class="row">
         @foreach ($day->meals as $meal)
-            <div class="col-md-4 mb-4">
-                <div class="card meal-card h-100 shadow-sm">
-                    <!-- Meal Image -->
-                    <img src="{{ $meal->image }}" class="card-img-top" alt="{{ $meal->title }}">
-                    <!-- Meal Details -->
+            <div class="col-xl-4 col-lg-6 mb-4">
+                <div class="card meal-card h-100">
+                    <img src="{{ $meal->image }}" class="card-img-top">
+                    <span class="badge meal-type text-bg-light">{{ $meal->type_label }}</span>
                     <div class="card-body">
-                        <h5 class="card-title fw-bold">{{ $meal->title }}</h5>
-                        <p class="card-text">
-                            <span class="badge bg-primary">{{ $meal->type_label }}</span>
-                            <span class="text-muted small">- {{ $meal->time }} Min Total</span>
-                        </p>
-                        <ul class="list-unstyled meal-details">
-                            <li><strong>Calories:</strong> {{ $meal->calories }}</li>
-                            <li><strong>Fat:</strong> {{ $meal->fat }}g</li>
-                            <li><strong>Protein:</strong> {{ $meal->protein }}g</li>
-                            <li><strong>Net Carbs:</strong> {{ $meal->net_carbs }}g</li>
-                        </ul>
+                        <h5 class="card-title fw-bold text-center">{{ $meal->title }}</h5>
+                        <div class="meal-details">
+                            <div class="detail-item">
+                                <div class="title">Calories</div>
+                                <div class="info">{{ $meal->calories }}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="title">Fat</div>
+                                <div class="info">{{ $meal->fat }}g</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="title">Protein</div>
+                                <div class="info">{{ $meal->protein }}g</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="title">Net Carbs</div>
+                                <div class="info">{{ $meal->net_carbs }}g</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="m-0">
+                    <button type="button" class="btn icon-button recipe-btn" data-bs-toggle="modal" data-bs-target="#recipe-{{ $meal->id }}">
+                        <i class="bi bi-search"></i>
+                        <div>View Recipe</div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal fade" id="recipe-{{ $meal->id }}" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            {{ $meal->recipe }}
+                            <div class="d-flex justify-content-end mt-3">
+                                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

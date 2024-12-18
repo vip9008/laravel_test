@@ -52,17 +52,33 @@ body {
             }
         }
 
-        .btn-check:checked {
+        .btn-check {
             & + .btn {
-                border-color: transparent;
-                background-color: #fcf0e2;
+                color: #b3b3b3;
                 font-weight: bold;
+                border-radius: 0;
             }
 
-            & ~ .days-group {
+            &:checked + .btn {
+                border-color: transparent;
+                background-color: #fcf0e2;
+                color: black;
+            }
+
+            &:checked ~ .days-group {
                 display: flex;
                 gap: 0.25rem;
             }
+        }
+
+        &:first-child .btn-check + .btn {
+            border-top-left-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+        }
+
+        &:last-child .btn-check + .btn {
+            border-top-right-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
         }
     }
 }
@@ -77,13 +93,75 @@ body {
 
     .btn {
         border-radius: 100% !important;
+        background-color: #3abe72;
+        border: none;
         font-size: 1.5rem;
         padding: 0;
         line-height: 1;
-        height: 2.5rem;
-        width: 2.5rem;
+        height: 2rem;
+        width: 2rem;
         display: inline-flex;
         align-items: center;
         justify-content: center;
+    }
+}
+
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    gap: 0.5rem;
+}
+
+.mark-complete-btn {
+    background-color: #3abe72;
+}
+
+.meal-card {
+    box-shadow: 0 0.125rem 0.5rem #e3e3e3;
+    position: relative;
+    border-radius: 0.5rem;
+    border: none;
+
+    .meal-type {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        text-transform: uppercase;
+    }
+
+    .card-title {
+        padding: 0.5rem;
+    }
+
+    .meal-details {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+
+        .detail-item {
+            text-align: center;
+            white-space: nowrap;
+
+            .title {
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            .info {
+                font-weight: bold;
+                color: #b3b3b3;
+            }
+        }
+    }
+
+    .recipe-btn {
+        text-transform: uppercase;
+        color: #b3b3b3;
+        border-radius: 0;
+        border: none;
+        padding: 1rem 1.5rem;
     }
 }
